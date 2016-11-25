@@ -1,9 +1,26 @@
+﻿C/C++错误语法：void main( )
+2013-04-07 11:31 1865人阅读 评论(0)
   
+    很多人甚至市面上的一些书籍，都使用了void main( ) ，其实这是错误的。C/C++ 中从来没有定义过void main( )。
+    C++ 之父 Bjarne Stroustrup 在他的主页上的 FAQ 中明确地写着 The definition void main( ) { /* ... */ } is not and never has been C++, nor has it even been C.（ void main( ) 从来就不存在于 C++ 或者 C ）。
+    下面我分别说一下 C 和 C++ 标准中对 main 函数的定义。  
+    “The C programming Language（《C 程序设计语言》）用的就是 main( )。”——这是因为第一版的C语言只有一种类型，那就是int，没有char，没有long，没有float，既然只有一种类型，那么就可以不写，后来的改进版为了兼容以前的代码于是规定：不明确标明返回值的，默认返回值为int，也就是说 main()等同于int main()，而不是等同于void main()。在C99中，标准要求编译器至少给 main() 这种用法来个警告。 
     
 1. C  
+  在 C89 中，main( ) 是可以接受的。Brian W. Kernighan 和 Dennis M. Ritchie 的经典巨著 The C programming Language 2e（《C 程序设计语言第二版》）用的就是 main( )。不过在最新的 C99 标准中，只有以下两种定义方式是正确的： 
   int main( void )  
   int main( int argc, char *argv[] )   
+  如果不需要从命令行中获取参数，请用int main(void) ；否则请用int main( int argc, char *argv[] ) 。  
+  main 函数的返回值类型必须是 int ，这样返回值才能传递给程序的激活者（如操作系统）。  
+  如果 main 函数的最后没有写 return 语句的话，C99 规定编译器要自动在生成的目标文件中（如 exe 文件）加入return 0; ，表示程序正常退出。不过，我还是建议你最好在main函数的最后加上return 语句，虽然没有这个必要，但这是一个好的习惯。注意，vc6不会在目标文件中加入return 0; ，大概是因为 vc6 是 98 年的产品，所以才不支持这个特性。现在明白我为什么建议你最好加上 return 语句了吧！不过，gcc3.2（Linux 下的 C 编译器）会在生成的目标文件中加入 return 0; 。  
 
+2. 关于 void main  
+  在 C 中，不接收任何参数也不返回任何信息的函数原型为“void foo(void);”。可能正是因为这个，所以很多人都误认为如果不需要程序返回值时可以把main函数定义成void main(void) 。然而这是错误的！main 函数的返回值应该定义为 int 类型，C 和 C++ 标准中都是这样规定的。虽然在一些编译器中，void main 可以通过编译（如 vc6），但并非所有编译器都支持 void main ，因为标准中从来没有定义过 void main 。g++3.2 中如果 main 函数的返回值不是 int 类型，就根本通不过编译。而 gcc3.2 则会发出警告。所以，如果你想你的程序拥有很好的可移植性，请一定要用 int main .  
+总而言之：  
+void main 主函数没有返回值   
+main 默认为int 型，即 int main()， 返回整数。   
+注意，新标准不允许使用默认返回值，即int不能省，而且对应main函数不再支持void型返回值，因此为了使程序有很好的移植性，强烈建议使用：   
 int main()   
 {   
+return 0; /* 新标准主函数的返回值这条语句可以省略 */   
 }
