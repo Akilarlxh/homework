@@ -32,3 +32,4 @@ char password(char ch[],int n)
 	} 
 	return *ch;
 } 
+ 
