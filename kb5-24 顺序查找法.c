@@ -20,3 +20,4 @@ int main()
 	else
 		printf("存在，该数的下标是%d",flag); 
 }
+ 
