@@ -26,3 +26,4 @@ int main()
 	}
 	printf("sum=%d",a[14]);//610对兔子 
 }
+ 
