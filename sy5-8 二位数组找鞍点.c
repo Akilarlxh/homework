@@ -43,3 +43,4 @@ int main()
 	if(t==0)
 	  printf("该数组不存在鞍点。\n");
 }
+ 
