@@ -23,4 +23,4 @@ main 默认为int 型，即 int main()， 返回整数。
 int main()   
 {   
 return 0; /* 新标准主函数的返回值这条语句可以省略 */   
-}
+} 

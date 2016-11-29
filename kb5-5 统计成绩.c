@@ -22,3 +22,4 @@ int main()
 		printf("%d ",grade[m][n]);
 	}	
  } 
+ 
