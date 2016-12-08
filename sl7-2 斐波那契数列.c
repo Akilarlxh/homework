@@ -22,3 +22,4 @@ void fun(int fib[],int n)
 		fib[i]=fib[i-1]+fib[i-2];
 	}
 } 
+ 
