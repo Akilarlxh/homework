@@ -15,3 +15,4 @@ int main()
 	p(&x,y); printf("%d,%d,%d--",x,y,z);
 	p(&y,x); printf("%d,%d,%d\n",x,y,z);
  } 
+ 
