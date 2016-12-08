@@ -30,3 +30,4 @@ int main()
 	printf("最大公约数是%d\n",z);
 	return 0;
 }
+ 
