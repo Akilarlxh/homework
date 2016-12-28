@@ -4,7 +4,7 @@
 file_1.text文件中读取字符并显示到屏幕上 
 */
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> 
 int main()
 {
 	FILE *fp;
