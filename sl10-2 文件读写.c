@@ -3,7 +3,7 @@
 从键盘上输入若干行字符，把他们输出到C盘根目录的
 file_2.txt文件中保存，再从file_2.txt文件中读取
 字符串输出在屏幕上
-*/ 
+*/  
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
